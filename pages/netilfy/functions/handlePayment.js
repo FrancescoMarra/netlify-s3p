@@ -24,7 +24,7 @@ exports.handler = async function(event, context) {
     from: 'francesco.marra84@gmail.com',
     to: 'francesco.marra@unina.it',
     subject: 'Risultato Pagamento',
-    text: "Dettagli del pagamento:
+    text: 'Dettagli del pagamento:
 Data: ${data}
 Orario: ${orario}
 Messaggio: ${messaggio}

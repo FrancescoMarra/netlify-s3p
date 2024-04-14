@@ -11,15 +11,17 @@ exports.handler = async function(event, context) {
   // Setup del transporter per nodemailer, sostituisci con i tuoi dati di configurazione
   let transporter = nodemailer.createTransport({
     service: 'gmail', // o altro servizio
+    host: 'smtp.gmail.com',
+    port: 465,
     auth: {
-      user: 's3p2024capri@gmail.com',
-      pass: 'tua_password'
+      user: 'francesco.marra84@gmail.com',
+      pass: 'vcbo pnkg kycd qhtd'
     }
   });
 
   // Setup delle opzioni email
   let mailOptions = {
-    from: 's3p2024capri@gmail.com',
+    from: 'francesco.marra84@gmail.com',
     to: 'francesco.marra@unina.it',
     subject: 'Risultato Pagamento',
     text: `Dettagli del pagamento:

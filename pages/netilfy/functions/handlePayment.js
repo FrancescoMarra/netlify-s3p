@@ -13,6 +13,7 @@ exports.handler = async function(event, context) {
     service: 'gmail', // o altro servizio
     host: 'smtp.gmail.com',
     port: 465,
+    secure: true, // True per la porta 465, false per le altre porte
     auth: {
       user: 'francesco.marra84@gmail.com',
       pass: 'vcbo pnkg kycd qhtd'
@@ -24,16 +25,15 @@ exports.handler = async function(event, context) {
     from: 'francesco.marra84@gmail.com',
     to: 'francesco.marra@unina.it',
     subject: 'Risultato Pagamento',
-    text: 'Dettagli del pagamento:
+    text: `Dettagli del pagamento:
 Data: ${data}
 Orario: ${orario}
 Messaggio: ${messaggio}
 Cognome: ${cognome}
-Nome : ${nome}
+Nome: ${nome}
 Esito: ${esito}
 Importo: ${importo}
-Codice: ${codTrans}'
-   
+Codice: ${codTrans}`
   };
 
   // Invio dell'email
@@ -48,13 +48,13 @@ Codice: ${codTrans}'
     };
   }
 
-// Reindirizzamento basato sull'esito
-const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' : 'http://www.grip.unina.it/s3p2024/ko.html';
- 
+  // Reindirizzamento basato sull'esito
+  const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' : 'http://www.grip.unina.it/s3p2024/ko.html';
+  
   return {
     statusCode: 302,
     headers: {
       Location: redirectUrl
     }
-  }
+  };
 };

@@ -56,5 +56,5 @@ const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' 
     headers: {
       Location: redirectUrl
     }
-  };
+  }
 };

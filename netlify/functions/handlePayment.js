@@ -6,7 +6,18 @@ exports.handler = async function(event, context) {
     tipoProdotto, alias, pan, email
   } = event.queryStringParameters;
 
+  // Setup del transporter per nodemailer, sostituisci con i tuoi dati di configurazione
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    auth: {
+      user: 'francesco.marra84@gmail.com',
+      pass: 'vcbo pnkg kycd qhtd'
+    }
+  });
 
+  
 // Reindirizzamento basato sull'esito
 const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' : 'http://www.grip.unina.it/s3p2024/ko.html';
  

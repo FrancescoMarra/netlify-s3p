@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 exports.handler = async function(event, context) {
   // Parse dei parametri GET
   const {

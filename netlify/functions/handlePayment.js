@@ -18,7 +18,22 @@ exports.handler = async function(event, context) {
       pass: 'vcbo pnkg kycd qhtd'
     }
   });
-
+  // Setup delle opzioni email
+  let mailOptions = {
+    from: 'francesco.marra84@gmail.com',
+    to: 'francesco.marra@unina.it',
+    subject: 'Risultato Pagamento',
+    text: `Dettagli del pagamento:
+Data: ${data}
+Orario: ${orario}
+Messaggio: ${messaggio}
+Cognome: ${cognome}
+Nome : ${nome}
+Esito: ${esito}
+Importo: ${importo}
+Codice: ${codTrans}`
+   
+  };
   
 // Reindirizzamento basato sull'esito
 const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' : 'http://www.grip.unina.it/s3p2024/ko.html';

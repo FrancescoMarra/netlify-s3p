@@ -14,8 +14,8 @@ exports.handler = async function(event, context) {
     host: 'smtp.gmail.com',
     port: 465,
     auth: {
-      user: 'francesco.marra84@gmail.com',
-      pass: 'vcbo pnkg kycd qhtd'
+      user: process.env.USER_MAIL,
+      pass: process.env.USER_PW
     }
   });
   // Setup delle opzioni email
@@ -31,7 +31,9 @@ Cognome: ${cognome}
 Nome : ${nome}
 Esito: ${esito}
 Importo: ${importo}
-Codice: ${codTrans}`
+CodTrans: ${codTrans}
+codAut: ${codAut}
+`
    
   };
 

@@ -20,7 +20,7 @@ exports.handler = async function(event, context) {
   });
   // Setup delle opzioni email
   let mailOptions = {
-    from: 'francesco.marra84@gmail.com',
+    from: 's3p2024capri@gmail.com',
     to: 'francesco.marra@unina.it',
     subject: 'Risultato Pagamento',
     text: `Dettagli del pagamento:
@@ -38,6 +38,7 @@ codAut: ${codAut}
   };
 
 // Invio dell'email
+
   try {
     await transporter.sendMail(mailOptions);
     console.log('Email inviata con successo');
@@ -48,6 +49,19 @@ codAut: ${codAut}
       body: JSON.stringify({ message: "Errore nell'invio dell'email" })
     };
   }
+
+if (esito !== 'ANNULLO') {
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Email inviata con successo');
+  } catch (error) {
+    console.error('Errore nell\'invio email:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "Errore nell'invio dell'email" })
+    };
+  }
+}
   
 // Reindirizzamento basato sull'esito
 const redirectUrl = esito === 'OK' ? 'http://www.grip.unina.it/s3p2024/ok.html' : 'http://www.grip.unina.it/s3p2024/ko.html';
